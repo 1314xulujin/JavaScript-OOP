@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /**
+     *  无论是单纯的构造函数(浪费一些内存) , 还是单纯的原型(参数无法自定义),都只能解决某一些问题,还不是最终完美的方案
+     *  理想方案: 该独立的独立 ,该共享的就共享 ,实现功能和内存的优化
+     *      混合模式 =  构造函数  +  原型
+     *
+     *      一般做法: 属性通过构造函数添加 (不同)  , 方法就通过原型添加 (一样)
+     */
+
+        function Cat (name,type){
+            this.name = name;
+            this.type = type;
+        }
+
+        Cat.prototype.catchMouse = function () {
+            console.log("我能抓老鼠!");
+        }
+
+        var cat1 = new Cat("小花","波斯猫");
+        var cat2 = new Cat("小黑","加菲猫");
+
+        console.log( cat1.catchMouse === cat2.catchMouse); // true  说明内存地址一样
+
+        //其实在js内置的构造函数中 ,也是把一些方法添加到对应的原型上的
+
+</script>
+</body>
+</html>

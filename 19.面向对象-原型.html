@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        原型: prototype 所有方法(函数)都具有一个原型属性
+        原型属性也可以视为一个指针 ,指向一个用于共享属性或者方法的对象
+
+        用途: 可以让同一个构造函数创建出来的对象共享同一个属性或者方法 (属于一个构造函数的共享区域)
+
+        常规做法: 可以把一些构造函数上需要用于共享的属性, 或者方法 ,不直接在构造函数内部添加 ,而是通过原型的方式添加 ,从而实现共享
+
+        __proto__  是浏览器厂商提供的一个用于查看对象原型的属性 ,指向的是当前对象的原型对象(共享区域的对象)
+
+        我们也可以理解为cat对象 继承了一个来自于共享区域(原型对象)的对象,从而可以使用共享区域(原型)对象的方法和属性
+
+        在js中, 会有比较复杂的继承关系,都是原型原型一个一个的继承 A -> B -> C -> D 构成一个继承的关系链, 那么这条关系链就称之为 "原型链"
+
+        如果只是单纯的使用原型, 创建的实例对象属性和方法就完全一样, 没有实际的使用价值
+     */
+
+        function Cat() {}
+        Cat.prototype.name="小花";
+        Cat.prototype.type="波斯猫";
+        Cat.prototype.catchMouse=function () {
+                console.log("我能抓老鼠!");
+        };
+
+        //实例化 : 实例化完之后, 原型上的方法属性原则上讲不属于任何一个实例化对象自身的方法或者属性 ,而且共享区域的
+        var cat1 = new Cat();
+        var cat2 = new Cat();
+
+        console.log(cat1.catchMouse === cat2.catchMouse); // true  说明两个方法来自于同一块内存地址
+
+        //对象的constructor 属性 : 用于返回实例对象的构造函数 (可以理解为这个对象是由哪个模具造出来的)
+        console.log(cat1.constructor);
+
+        // isPrototypeOf() 判断一个实例对象否指向了该构造函数的原型对象
+        console.log(Cat.prototype.isPrototypeOf(cat1));
+</script>
+</body>
+</html>

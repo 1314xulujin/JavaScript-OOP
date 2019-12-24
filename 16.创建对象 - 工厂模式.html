@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //3.工厂模式 = > 批量大量操作 : 其实就是把创建对象的过程封装成一个方法
+
+    //工厂模式属于23中设计模式的一种 详情见:http://c.biancheng.net/design_pattern/
+
+    //可以解决批量声明对象的繁琐过程和重复代码问题
+    //但是 使用工厂模式批量创建的对象都是Object  , 无法 像js中内置的Array , Date , RegExp ... 一样 ,容易辨别什么对象
+
+    //检测数据类型  :   typeof  = > number , string , null , undefined , boolean object
+
+    //检测对象的类型 instanceof  检测对象是由哪个类(模具)创建出来的
+    var arr = new Array();
+    console.log(arr instanceof Array); // = > true  , 可以理解为arr是不是由Array 这个模子刻出来的
+
+    function createObj(index,len){
+        var obj = new Object();
+        obj.index = index;
+        obj.len = len;
+        obj.autoplay = function () {
+            console.log('这是一个自动播放的函数!');
+        }
+        return obj;
+    }
+
+    //批量创建对象
+    var slide1 = createObj(1,5);
+    var slide2 = createObj(3,12);
+    var slide3 = createObj(4,9);
+
+
+</script>
+</body>
+</html>

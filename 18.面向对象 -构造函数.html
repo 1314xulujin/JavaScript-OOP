@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /**
+     *   使用构造函数方式来创建对象 ,解决了工厂模式下创建对象无法识别对象类型的问题
+     *   构造函数 ( 类) : 用于批量生产对象的模具 (就是模具中有什么方法功能,属性 那么通过该模具所创建出来的对象具有对相应的方法和属性)
+     *
+     *   其实 :js中内置的 Array , Date , Number , Boolean , String , Object ... 都是叫构造函数
+     *
+     *   在ES6以前的JS版本, 因为没有class( 类的概念) ,所以会把可以实现相同目的的方式(构造函数)称之为 "类"
+     */
+
+    //定义一个构造函数  ( 潜规则: 一般为了与普通的函数做区分,会首字母大写)
+    function Cat(name,type){
+        this.name = name;  // this 指向的是当前构造函数创建的实例对象
+        this.type = type;
+        this.catchMouse = function(){
+            console.log("我能抓老鼠!!!!");
+        }
+    }
+
+    //把通过构造函数创建对象的过程 = > 对象实例化
+    var cat1 = new Cat('小花','波斯猫');
+    var cat2 = new Cat('小黑','加菲猫');
+
+    // console.log(10 == 20); //基础类型数据 ,比较的是两个值是否相等
+    // console.log(cat1 == cat2); //引用类型数据 , 比较的两个引用对象在内存的引用地址是否相等
+        console.log(cat1.catchMouse === cat2.catchMouse);//false  => 说明这两个方法来自于不同的内存地址 (创建多个对象的都是不同的地址,但是方法一样的就造成内存浪费)
+
+    /***
+     *   在new 运算之后 js做什么事情??
+     *      1.创建一个空的Object 对象   = > new Object 对象 (隐式)
+     *      2.将构造函数内部的this指向到当前实例化的对象   this = > cat
+     *      3.将构造函数中的属性和方法都克隆给新的实例对象(也就是说运行了该构造函数)
+     *      4.返回新创建的实例对象
+     * */
+
+    // Cat("小花","波斯猫"); //直接运行, 也可以, 但是内部的this 指向的就是当前Cat函数所在对象 window
+
+
+</script>
+</body>
+</html>

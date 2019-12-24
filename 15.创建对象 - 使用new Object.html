@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //回顾数组  , 日期 , 正则 , 数字 , 字符串对象, 布尔对象 ...
+    // var arr = new Array();
+    // var date = new Date();
+    // var reg = new RegExp();
+
+    //不足: 创建使用单一 ,过程繁琐 ,不能很好支持创建多个对象
+    var obj = new Object(); //创建一个对象 , 空对象
+        obj.name = "张三";
+        obj['run'] = function(){
+            console.log('我能跑!');
+        }
+        console.log(obj);
+</script>
+</body>
+</html>
